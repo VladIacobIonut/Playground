@@ -10,7 +10,8 @@ import UIKit
 import SnapKit
 
 class CustomLayoutViewController: UIViewController {
-    // MARK:- Properties
+    // MARK: - Properties
+    
     private let collectionViewLayout: UICollectionViewFlowLayout = {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -23,13 +24,11 @@ class CustomLayoutViewController: UIViewController {
     // MARK: - Init
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: CustomCollectionViewLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: ShazamCollectionViewLayout())
         collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: "BasicCell")
         
         super.init(nibName: nil, bundle: nil)
         
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        collectionView.delegate = self
         collectionView.dataSource = self
     }
     
@@ -37,7 +36,7 @@ class CustomLayoutViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK :- ViewController
+    // MARK: - ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +52,11 @@ class CustomLayoutViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.leading.bottom.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(80)
         }
     }
 }
-
 
 // MARK: - CollectionViewDataSource
 
@@ -71,8 +70,7 @@ extension CustomLayoutViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.label.text = "A state of trance 201\(indexPath.row)"
-        cell.imageView.image = #imageLiteral(resourceName: "armin.jpeg")
+        cell.label.text = "October \(indexPath.row + 1)"
         
         return cell
     }

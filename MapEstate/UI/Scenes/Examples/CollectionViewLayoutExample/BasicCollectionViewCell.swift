@@ -10,8 +10,10 @@ import UIKit
 
 class BasicCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
+    
     let label = UILabel()
     let imageView = UIImageView()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -27,24 +29,17 @@ class BasicCollectionViewCell: UICollectionViewCell {
     // MARK: - Functions
 
     private func setupUI() {
-        contentView.addSubview(imageView)
         contentView.addSubview(label)
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 15
-        contentView.backgroundColor = UIColor.white
-        
-        imageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
+        contentView.backgroundColor = UIColor.randomColor()
+                
         label.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.bottom.equalToSuperview().offset(-60)
         }
         
-        
-        imageView.contentMode = .scaleToFill
-        label.font = UIFont.ceraPro(size: 24)
+        label.font = UIFont.ceraPro(size: 34)
         label.textColor = UIColor.white
     }
 }
