@@ -11,5 +11,5 @@ import Foundation
 extension URL {
     // MARK: - Properties
     
-    static let geoMapURL = URL(string: "mapbox://styles/mapbox/outdoors-v9")
+    static let geoMapURL = URL(string: "mapbox://styles/mapbox/dark-v9")
 }

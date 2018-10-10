@@ -34,7 +34,7 @@ final class PipExampleViewController: UIViewController {
     // MARK: - Private Functions
     
     private func setupCornerView() {
-        cornerView.map {
+        _ = cornerView.map {
             view.addSubview($0)
             $0.backgroundColor = .clear
             $0.layer.borderWidth = 2
@@ -53,6 +53,14 @@ final class PipExampleViewController: UIViewController {
         view.addSubview(pictureView)
         pictureView.frame = topLeftView.frame
         pictureView.layer.cornerRadius = 10
+        
+        let itemBehaviour = UIDynamicItemBehavior(items: [pictureView])
+        itemBehaviour.resistance = 10
+        itemBehaviour.elasticity = 0.2
+        itemBehaviour.density = 0.1
+        itemBehaviour.friction = 0
+        
+        animator.addBehavior(itemBehaviour)
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePictureViewPan(recognizer:)))
         pictureView.addGestureRecognizer(panGesture)

@@ -31,7 +31,7 @@ final class AppleMusicFilterViewController: UIViewController {
     // MARK: - Private Functions
     
     private func setupUI() {
-        bubbleViews.map {
+        _ = bubbleViews.map {
             view.addSubview($0)
             $0.backgroundColor = UIColor.appleMusicRed
             $0.layer.cornerRadius = bubbleViewHeight / 2
