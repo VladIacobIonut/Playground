@@ -9,10 +9,10 @@
 import UIKit
 
 enum Example: String, CaseIterable {
-    case tinder = "Tinder"
+    case tinder = "Tinder Dashboard"
     case facetime = "Facetime PiP"
     case music = "AppleMusic Filter"
-    case collectionView = "CollectionViewLayout"
+    case collectionView = "Shazam Discover"
     
     var viewController: UIViewController {
         switch self {
@@ -36,7 +36,7 @@ enum Example: String, CaseIterable {
         case .music:
             return #imageLiteral(resourceName: "music.png")
         case .collectionView:
-            return #imageLiteral(resourceName: "flower.png")
+            return #imageLiteral(resourceName: "shazam.png")
         }
     }
 }
