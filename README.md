@@ -1,6 +1,3 @@
-# Playground
-A place for new things
-
 
 # Description
 
