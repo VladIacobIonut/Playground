@@ -48,7 +48,7 @@ final class TinderExampleViewController: UIViewController {
             $0.top.equalToSuperview().offset(80)
         }
         
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.isScrollEnabled = false
     }
 }
