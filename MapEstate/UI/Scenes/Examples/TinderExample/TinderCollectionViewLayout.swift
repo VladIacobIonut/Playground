@@ -33,22 +33,26 @@ final class TinderCollectionViewLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let allAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        let allAttributes = NSArray (array: super.layoutAttributesForElements(in: rect)!, copyItems: true)
         
-        for attributes in allAttributes {
+        allAttributes.enumerateObjects { (object, index, stop) in
+            let attributes = object as! UICollectionViewLayoutAttributes
+            
             self.updateCellAttributes(attributes)
         }
         
-        return allAttributes
+        return allAttributes as? [UICollectionViewLayoutAttributes]
     }
     
     override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let nextIndexPath = IndexPath(item: itemIndexPath.item, section: itemIndexPath.section)
         let nextAttr = self.layoutAttributesForItem(at: nextIndexPath)
-    
+        
         nextAttr?.frame = lastFrame
         nextAttr?.zIndex = -nextIndexPath.item
-        nextAttr?.alpha = 1
+        if itemIndexPath.item != 0 {
+            nextAttr?.alpha = 0.5
+        }
     
         return nextAttr
     }
@@ -60,22 +64,23 @@ final class TinderCollectionViewLayout: UICollectionViewFlowLayout {
      */
     fileprivate func updateCellAttributes(_ attributes: UICollectionViewLayoutAttributes) {
         attributes.zIndex = -attributes.indexPath.row
+ 
         
         var origin = attributes.frame.origin
-        let translation = CGFloat((attributes.indexPath.row + 1) * 10)
+        let translation = CGFloat((attributes.indexPath.row + 1) * 7)
         let deltaZ = CGFloat(attributes.indexPath.row) / 10
 
-        let scale = 1 - deltaZ * 0.5
         var t = CGAffineTransform.identity
-//        t = t.scaledBy(x: scale, y: 1)
         t = t.translatedBy(x: 0, y: (translation + deltaZ * translation))
+        attributes.alpha = 1 - deltaZ * 4
         attributes.transform = t
+    
+        let width = attributes.indexPath.row == 0 ? attributes.frame.width : attributes.frame.width - 30
         
-        origin.x = (self.collectionView?.frame.width)! / 2 - attributes.frame.width / 2 - (self.collectionView?.contentInset.left)!
-        t = t.scaledBy(x: scale, y: 1)
+        origin.x = (self.collectionView?.frame.width)! / 2 - width / 2 - (self.collectionView?.contentInset.left)!
         origin.y = collectionView!.bounds.minY + collectionView!.contentInset.top
-        attributes.frame = CGRect(origin: origin, size: attributes.frame.size)
-
+        attributes.frame = CGRect(origin: origin, size: CGSize(width: width, height: attributes.frame.height))
+        
         lastFrame = attributes.frame
     }
 }

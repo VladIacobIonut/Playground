@@ -16,13 +16,13 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
     private var initialOffset: CGPoint = .zero
     private var fieldAnimator = UIDynamicAnimator()
     private var fieldBehaviour = UIFieldBehavior.springField()
-    private let initialOrigin = CGPoint(x: 0, y: 0)
-    
+    private var initialCenter: CGPoint = .zero
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        initialCenter = self.center
         setupUI()
         setupSpringField()
     }
@@ -60,15 +60,6 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
     
     private func setupSpringField() {
         fieldAnimator = UIDynamicAnimator(referenceView: self)
-        fieldBehaviour.addItem(contentView)
-        fieldBehaviour.position = self.center
-        fieldBehaviour.region = UIRegion(size: UIScreen.main.bounds.size)
-        
-        let itemBehaviour = UIDynamicItemBehavior(items: [contentView])
-        itemBehaviour.density = 0.6
-        itemBehaviour.friction = 1
-        
-        fieldAnimator.addBehavior(itemBehaviour)
     }
     
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -79,24 +70,22 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
             initialOffset = CGPoint(x: touchPoint.x - contentView.center.x, y: touchPoint.y - contentView.center.y)
         case .changed:
             contentView.center = CGPoint(x: touchPoint.x - initialOffset.x, y: touchPoint.y - initialOffset.y)
-        case .ended:
-            let snapBehaviour = UISnapBehavior(item: contentView, snapTo: CGPoint(x: self.center.x - 10, y: self.center.y))
-            snapBehaviour.damping = 0.2
-            fieldAnimator.addBehavior(snapBehaviour)
+        case .ended, .cancelled:
             handleSwipeEnding(for: recognizer.velocity(in: self).x)
         default:
-            break
+            return
         }
     }
     
     private func handleSwipeEnding(for xVelocity: CGFloat) {
         let velocity = abs(xVelocity)
         guard velocity > 500 else {
+            fieldAnimator.addBehavior(UISnapBehavior(item: contentView, snapTo: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)))
             return
         }
         
         fieldAnimator.removeAllBehaviors()
-        contentView.transform = CGAffineTransform(translationX: xVelocity, y: 0)
+        contentView.transform = CGAffineTransform(translationX: xVelocity * 0.8, y: 0)
         shouldDismiss?()
     }
 }
