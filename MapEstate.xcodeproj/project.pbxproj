@@ -47,6 +47,10 @@
 		F591E6E1216385B500EA175A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591E6E0216385B500EA175A /* SearchView.swift */; };
 		F591E6E321638CCE00EA175A /* InstantPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591E6E221638CCE00EA175A /* InstantPanGestureRecognizer.swift */; };
 		F591E6E521639FDF00EA175A /* UISpringTimingParameters+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591E6E421639FDF00EA175A /* UISpringTimingParameters+Extensions.swift */; };
+		F5B07531216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B07530216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift */; };
+		F5B07533216F76AE003BD49C /* SpringFieldBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B07532216F76AE003BD49C /* SpringFieldBehavior.swift */; };
+		F5B0753521707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0753421707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift */; };
+		F5B0753721707E0B003BD49C /* AttachmentBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0753621707E0B003BD49C /* AttachmentBehavior.swift */; };
 		F5CDB800214A46A900C9FD28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CDB7FF214A46A900C9FD28 /* AppDelegate.swift */; };
 		F5CDB805214A46A900C9FD28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CDB803214A46A900C9FD28 /* Main.storyboard */; };
 		F5CDB807214A46AA00C9FD28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CDB806214A46AA00C9FD28 /* Assets.xcassets */; };
@@ -142,6 +146,10 @@
 		F591E6E0216385B500EA175A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F591E6E221638CCE00EA175A /* InstantPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		F591E6E421639FDF00EA175A /* UISpringTimingParameters+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISpringTimingParameters+Extensions.swift"; sourceTree = "<group>"; };
+		F5B07530216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldBehaviourExampleViewController.swift; sourceTree = "<group>"; };
+		F5B07532216F76AE003BD49C /* SpringFieldBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringFieldBehavior.swift; sourceTree = "<group>"; };
+		F5B0753421707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentBehaviorExampleViewController.swift; sourceTree = "<group>"; };
+		F5B0753621707E0B003BD49C /* AttachmentBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentBehavior.swift; sourceTree = "<group>"; };
 		F5CDB7FC214A46A900C9FD28 /* MapEstate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapEstate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CDB7FF214A46A900C9FD28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CDB804214A46A900C9FD28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -292,16 +300,27 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		F5B0752F216F4EA4003BD49C /* FieldBehaviourExample */ = {
+			isa = PBXGroup;
+			children = (
+				F5B07530216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift */,
+				F5B07532216F76AE003BD49C /* SpringFieldBehavior.swift */,
+				F5B0753421707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift */,
+				F5B0753621707E0B003BD49C /* AttachmentBehavior.swift */,
+			);
+			path = FieldBehaviourExample;
+			sourceTree = "<group>";
+		};
 		F5CDB7F3214A46A900C9FD28 = {
 			isa = PBXGroup;
 			children = (
+				F5CDB812214A60AE00C9FD28 /* Frameworks */,
 				F545C5C3216CC9C100C2F349 /* Mapbox.framework */,
+				F5CDB7FE214A46A900C9FD28 /* MapEstate */,
+				F5CDB7FD214A46A900C9FD28 /* Products */,
 				F545C5C0216CC9B800C2F349 /* Realm.framework */,
 				F545C5BD216CC9B300C2F349 /* RealmSwift.framework */,
 				F545C5B9216CC9AE00C2F349 /* SnapKit.framework */,
-				F5CDB7FE214A46A900C9FD28 /* MapEstate */,
-				F5CDB7FD214A46A900C9FD28 /* Products */,
-				F5CDB812214A60AE00C9FD28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -453,9 +472,10 @@
 		F5D4D8A42164DF8C006D2C33 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				F5177E8B216748E900C6D1B0 /* CollectionViewLayoutExample */,
-				F5177E8A216748DB00C6D1B0 /* PiPExample */,
 				F5177E872166336600C6D1B0 /* AppleMusicFilterExample */,
+				F5177E8B216748E900C6D1B0 /* CollectionViewLayoutExample */,
+				F5B0752F216F4EA4003BD49C /* FieldBehaviourExample */,
+				F5177E8A216748DB00C6D1B0 /* PiPExample */,
 				F5D4D8A52164EEB3006D2C33 /* TinderExample */,
 			);
 			path = Examples;
@@ -584,6 +604,7 @@
 				F545C5C7216DE06F00C2F349 /* TinderCollectionViewLayout.swift in Sources */,
 				F5CDB825214A73A700C9FD28 /* ProfileViewController.swift in Sources */,
 				F5CDB828214A746D00C9FD28 /* CustomTabBarController.swift in Sources */,
+				F5B07533216F76AE003BD49C /* SpringFieldBehavior.swift in Sources */,
 				F5177E8D2167490900C6D1B0 /* CustomLayoutViewController.swift in Sources */,
 				F5177E892166338E00C6D1B0 /* BubbleView.swift in Sources */,
 				F5D4D89D2164C1E9006D2C33 /* ProfileViewProtocol.swift in Sources */,
@@ -608,8 +629,10 @@
 				F5177E8421660B1200C6D1B0 /* CGPoint+Extensions.swift in Sources */,
 				F56967CD2150DFFC003642A8 /* ConcreteDetailsPresenter.swift in Sources */,
 				F5CDB82D214A802000C9FD28 /* CustomNavigationController.swift in Sources */,
+				F5B07531216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift in Sources */,
 				F5E036FB214F93DD00F32593 /* MapPresenter.swift in Sources */,
 				F5CDB82B214A7FA900C9FD28 /* UIColor+Extensions.swift in Sources */,
+				F5B0753521707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift in Sources */,
 				F519353D215A65AE0005F778 /* PropertiesManager.swift in Sources */,
 				F591E6E521639FDF00EA175A /* UISpringTimingParameters+Extensions.swift in Sources */,
 				F5D4D8992164C13B006D2C33 /* ExampleCellViewModel.swift in Sources */,
@@ -622,6 +645,7 @@
 				F56967CB2150DEFA003642A8 /* DetailsPresenter.swift in Sources */,
 				F5CDB800214A46A900C9FD28 /* AppDelegate.swift in Sources */,
 				F519353B215A65090005F778 /* SetDetailsUC.swift in Sources */,
+				F5B0753721707E0B003BD49C /* AttachmentBehavior.swift in Sources */,
 				F5CDB823214A739800C9FD28 /* MapViewController.swift in Sources */,
 				F5177E9121676B7200C6D1B0 /* ShazamCollectionViewLayout.swift in Sources */,
 				F5E036FD214F940F00F32593 /* ConcreteMapPresenter.swift in Sources */,
