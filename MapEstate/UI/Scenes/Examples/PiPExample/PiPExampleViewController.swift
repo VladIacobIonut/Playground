@@ -10,15 +10,16 @@ import UIKit
 
 final class PipExampleViewController: UIViewController {
     // MARK: - Properties
+    
+    private lazy var cornerView: [UIView] = [topLeftView, topRightView, bottomLeftView, bottomRightView]
+    private lazy var animator = UIDynamicAnimator(referenceView: view)
     private let topLeftView = UIView()
     private let topRightView = UIView()
     private let bottomLeftView = UIView()
     private let bottomRightView = UIView()
-    private let cornerViewsWidth: CGFloat = 80
-    private let cornerViewHeight: CGFloat = 120
+    private let cornerViewsWidth: CGFloat = 60
+    private let cornerViewHeight: CGFloat = 100
     private let pictureView = UIView()
-    private lazy var cornerView: [UIView] = [topLeftView, topRightView, bottomLeftView, bottomRightView]
-    private lazy var animator = UIDynamicAnimator(referenceView: view)
     
     // MARK: - ViewController
     

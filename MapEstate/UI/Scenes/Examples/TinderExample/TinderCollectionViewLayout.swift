@@ -84,3 +84,4 @@ final class TinderCollectionViewLayout: UICollectionViewFlowLayout {
         lastFrame = attributes.frame
     }
 }
+

@@ -13,10 +13,12 @@ final class AppleMusicFilterViewController: UIViewController {
     private let bubbleViewHeight: CGFloat = 100
     private lazy var animator = UIDynamicAnimator(referenceView: view)
     private var pushBehaviour = UIPushBehavior()
+    private var bubblesBehavior: BubblesBehavior!
     private var bubbleView = BubbleView(type: "Rock")
     private var bubbleView1 = BubbleView(type: "Alternative")
     private var bubbleView2 = BubbleView(type: "Classic")
     private lazy var bubbleViews: [UIView] = [bubbleView, bubbleView1, bubbleView2]
+    private var offset: CGPoint = .zero
     
     // MARK: - ViewControlller
     
@@ -41,37 +43,32 @@ final class AppleMusicFilterViewController: UIViewController {
         bubbleView2.frame = CGRect(x: view.center.x + bubbleViewHeight / 2, y: view.center.y + bubbleViewHeight / 2,width: bubbleViewHeight, height: bubbleViewHeight)
         bubbleView1.frame = CGRect(x: view.center.x - bubbleViewHeight / 2, y: view.center.y + bubbleViewHeight / 2,width: bubbleViewHeight, height: bubbleViewHeight)
         
-        let collisionBehaviour = UICollisionBehavior(items: bubbleViews)
-        collisionBehaviour.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsets(top: 80, left: 1, bottom: 50, right: 1))
-        collisionBehaviour.collisionMode = .everything
-        collisionBehaviour.translatesReferenceBoundsIntoBoundary = true
-        
-        let ballDynamicsProperties = UIDynamicItemBehavior(items: bubbleViews)
-        ballDynamicsProperties.elasticity = 0.5
-        ballDynamicsProperties.friction = 0
-        ballDynamicsProperties.resistance = 0
-        
-        pushBehaviour = UIPushBehavior(items: bubbleViews, mode: UIPushBehavior.Mode.continuous)
-        pushBehaviour.pushDirection = CGVector(dx: -5, dy: 6)
-    
-        animator.addBehavior(ballDynamicsProperties)
-        animator.addBehavior(pushBehaviour)
-        animator.addBehavior(collisionBehaviour)
+        bubblesBehavior = BubblesBehavior(items: bubbleViews)
+        animator.addBehavior(bubblesBehavior)
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePictureViewPan(recognizer:)))
         view.addGestureRecognizer(panGesture)
     }
     
     @objc private func handlePictureViewPan(recognizer: UIPanGestureRecognizer) {
+        let touchPoint = recognizer.translation(in: view)
+        
         switch recognizer.state {
         case .began:
-            animator.removeBehavior(pushBehaviour)
+            offset.x = touchPoint.x - view.center.x
+            offset.y = touchPoint.y - view.center.y
+            bubblesBehavior.radialGravityPosition = touchPoint
+            bubblesBehavior.gravityStrength = 20
+            bubblesBehavior.density = 1
+            
         case .changed:
-            let translation = recognizer.translation(in: view)
-            pushBehaviour.pushDirection = CGVector(dx: translation.x, dy: translation.y)
-            animator.addBehavior(pushBehaviour)
+            bubblesBehavior.radialGravityPosition = CGPoint(x: touchPoint.x - offset.x, y: touchPoint.y - offset.y)
+            
         case .ended:
-            animator.removeBehavior(pushBehaviour)
+            bubblesBehavior.radialGravityPosition = view.center
+            bubblesBehavior.gravityStrength = 1
+            bubblesBehavior.density = 7
+            
         default:
             break
         }

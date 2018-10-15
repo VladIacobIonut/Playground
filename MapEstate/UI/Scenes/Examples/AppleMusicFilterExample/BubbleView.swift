@@ -13,6 +13,15 @@ final class BubbleView: UIView {
     
     private var isSelected: Bool = false
     private let filterLabel = UILabel()
+    
+    override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
+        return .ellipse
+    }
+    
+    override var collisionBoundingPath: UIBezierPath {
+        return UIBezierPath.init(ovalIn: bounds)
+    }
+    
     // MARK: - Init
     
     init(type: String) {
@@ -44,5 +53,4 @@ final class BubbleView: UIView {
         backgroundColor = isSelected ? .white : .appleMusicRed
         filterLabel.textColor = isSelected ? .appleMusicRed : .white
     }
-    
 }

@@ -70,6 +70,8 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
             initialOffset = CGPoint(x: touchPoint.x - contentView.center.x, y: touchPoint.y - contentView.center.y)
         case .changed:
             contentView.center = CGPoint(x: touchPoint.x - initialOffset.x, y: touchPoint.y - initialOffset.y)
+            print(self.frame.width / 2 - touchPoint.x)
+//            contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) )
         case .ended, .cancelled:
             handleSwipeEnding(for: recognizer.velocity(in: self).x)
         default:

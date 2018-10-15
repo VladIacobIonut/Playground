@@ -35,10 +35,10 @@ final class RootRouter: Routable {
         let profilePresenter = ConcreteProfilePresenter(viewModel: profileViewModel, router: self)
         let profileVC = ProfileViewController(viewModel: profileViewModel, presenter: profilePresenter)
         
-        mapVC.tabBarItem = UITabBarItem(title: "Map", image: #imageLiteral(resourceName: "map"), tag: 0)
-        profileVC.tabBarItem = UITabBarItem(title: "Examples", image: #imageLiteral(resourceName: "profile"), tag: 1)
+        mapVC.tabBarItem = UITabBarItem(title: "Map", image: #imageLiteral(resourceName: "map"), tag: 1)
+        profileVC.tabBarItem = UITabBarItem(title: "Examples", image: #imageLiteral(resourceName: "profile"), tag: 0)
         navVC = CustomNavigationController(rootViewController: profileVC)
-        tabVC.viewControllers = [mapVC, navVC]
+        tabVC.viewControllers = [navVC, mapVC]
         window.rootViewController = tabVC
     }
     
