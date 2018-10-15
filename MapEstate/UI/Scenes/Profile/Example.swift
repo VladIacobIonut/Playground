@@ -26,7 +26,6 @@ enum Example: String, CaseIterable {
         case .collectionView:
             return CustomLayoutViewController()
         case .fieldBehaviour:
-//            return FieldBehaviourExampleViewController()
             return AttachmentBehaviorExampleViewController()
         }
     }

@@ -13,15 +13,15 @@ final class AttachmentBehaviorExampleViewController: UIViewController {
     
     private let dynamicView = UIView()
     private lazy var animator: UIDynamicAnimator = {
-        return UIDynamicAnimator(referenceView: self.view)
+        return UIDynamicAnimator(referenceView: view)
     }()
     
-    private var initialOffset = CGPoint.zero
-    private let height = 100
+    private var offset = CGPoint.zero
+    private let height = 400
     private lazy var width: Int = {
-       return 150
+       return Int(view.bounds.width)
     }()
-    private var attachmentBehavior: SpringFieldBehavior!
+    private var attachmentBehavior: AttachmentBehavior!
     
     // MARK: - ViewController
     
@@ -39,32 +39,50 @@ final class AttachmentBehaviorExampleViewController: UIViewController {
         view.addSubview(dynamicView)
         dynamicView.backgroundColor = UIColor.applePurple
         dynamicView.layer.cornerRadius = 20
-        dynamicView.frame = CGRect(x: 0, y: 160, width: width, height: height)
+        dynamicView.frame = CGRect(x: 160, y: 160, width: width, height: height)
         
-        let panGesture = InstantPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         dynamicView.addGestureRecognizer(panGesture)
         
-//        attachmentBehavior = AttachmentBehavior(item: dynamicView, anchorPoint: CGPoint(x: view.frame.width / 2, y: view.frame.height))
-        attachmentBehavior = SpringFieldBehavior(item: dynamicView)
+        attachmentBehavior = AttachmentBehavior(item: dynamicView, anchorPoint: CGPoint(x: view.frame.width / 2, y: view.frame.height / 2))
         animator.addBehavior(attachmentBehavior)
     }
     
     
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
-        let touchPoint: CGPoint = recognizer.location(in: self.view)
-        
+        var location: CGPoint = recognizer.location(in: view)
         switch recognizer.state {
         case .began:
+            offset.x = location.x - dynamicView.center.x
+            offset.y = location.y - dynamicView.center.y
+            
             attachmentBehavior.isEnabled = false
-            initialOffset.x = touchPoint.x - dynamicView.center.x
-            initialOffset.y = touchPoint.y - dynamicView.center.y
         case .changed:
-            dynamicView.center = CGPoint(x: touchPoint.x - initialOffset.x, y: touchPoint.y - initialOffset.y)
-        case .ended:
-//            attachmentBehavior.addLinearVelocity(velocity: recognizer.velocity(in: view))
+            // Get reference bounds.
+            let referenceBounds = view.bounds
+            let referenceWidth = referenceBounds.width
+            let referenceHeight = referenceBounds.height
+            
+            // Get item bounds.
+            let itemBounds = dynamicView.bounds
+            let itemHalfWidth = itemBounds.width / 2.0
+            let itemHalfHeight = itemBounds.height / 2.0
+            
+            // Apply the initial offset.
+            location.x -= offset.x
+            location.y -= offset.y
+            
+            // Bound the item position inside the reference view.
+            location.x = max(itemHalfWidth, location.x)
+            location.x = min(referenceWidth - itemHalfWidth, location.x)
+            location.y = max(itemHalfHeight, location.y)
+            location.y = min(referenceHeight - itemHalfHeight, location.y)
+            
+            dynamicView.center = location
+        case .ended, .cancelled:
+            attachmentBehavior.gravityDirection = dynamicView.center.y > view.center.y ? 1 : -1
             attachmentBehavior.isEnabled = true
-        default:
-            ()
+        default: ()
         }
     }
 }

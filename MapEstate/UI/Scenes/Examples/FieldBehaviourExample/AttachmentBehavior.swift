@@ -11,28 +11,29 @@ import UIKit
 final class AttachmentBehavior: UIDynamicBehavior {
     // MARK: - Properties
 
-    var isEnabled: Bool = true {
+    var isEnabled = true {
         didSet {
             if isEnabled {
+                collisionBehavior.addItem(item)
                 commonGravityField.addItem(item)
-                inverseGravityField.addItem(item)
-                addChildBehavior(inverseGravityField)
-                addChildBehavior(commonGravityField)
+                itemBehavior.addItem(item)
             }
             else {
+                collisionBehavior.removeItem(item)
                 commonGravityField.removeItem(item)
-                inverseGravityField.removeItem(item)
-                removeChildBehavior(inverseGravityField)
-                removeChildBehavior(commonGravityField)
+                itemBehavior.removeItem(item)
             }
         }
     }
+    var gravityDirection = 1 {
+        didSet {
+            commonGravityField.gravityDirection = CGVector(dx: 0, dy: gravityDirection)
+        }
+    }
     
-    private var slidingAttachment: UIAttachmentBehavior!
     private var collisionBehavior: UICollisionBehavior
+    private var commonGravityField: UIGravityBehavior
     private var item: UIDynamicItem
-    private var inverseGravityField: UIFieldBehavior
-    private var commonGravityField: UIFieldBehavior
     private var itemBehavior: UIDynamicItemBehavior
     
     // MARK: - Init
@@ -40,9 +41,8 @@ final class AttachmentBehavior: UIDynamicBehavior {
     init(item: UIDynamicItem, anchorPoint: CGPoint) {
         self.item = item
         self.collisionBehavior = UICollisionBehavior(items: [item])
-        self.inverseGravityField = UIFieldBehavior.linearGravityField(direction: CGVector(dx: 0, dy: -1))
-        self.commonGravityField = UIFieldBehavior.linearGravityField(direction: CGVector(dx: 0, dy: 1))
         self.itemBehavior = UIDynamicItemBehavior(items: [item])
+        self.commonGravityField = UIGravityBehavior(items: [item])
         
         super.init()
         
@@ -54,37 +54,18 @@ final class AttachmentBehavior: UIDynamicBehavior {
     override func willMove(to dynamicAnimator: UIDynamicAnimator?) {
         super.willMove(to: dynamicAnimator)
         
-        guard let referenceView = dynamicAnimator?.referenceView?.frame else { return }
-        inverseGravityField.position = CGPoint(x: referenceView.width / 2, y: 0)
-        commonGravityField.position = CGPoint(x: referenceView.width / 2, y: referenceView.height)
-
-        commonGravityField.region = UIRegion(size: CGSize(width: referenceView.width, height: referenceView.height))
-        inverseGravityField.region = UIRegion(size: CGSize(width: referenceView.width, height: 2 * referenceView.height))
-
-        inverseGravityField.strength = 50
-        commonGravityField.strength = 50
-
-//        addChildBehavior(commonGravityField)
-        addChildBehavior(inverseGravityField)
+        guard let referenceView = dynamicAnimator?.referenceView?.bounds else { return }
         
-        slidingAttachment = UIAttachmentBehavior.slidingAttachment(with: item, attachmentAnchor: CGPoint(x: referenceView.width / 2, y: 0), axisOfTranslation: CGVector(dx: 0, dy: -1))
-        addChildBehavior(slidingAttachment)
     }
     
     // MARK: - Setup Behaviors
     
     private func setupBehaviors() {
-        collisionBehavior.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsets(top: 80, left: 0, bottom: -400, right: 0))
+        collisionBehavior.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsets(top: 80, left: 0, bottom: -300, right: 0))
         
-        // Set properties for the animated dynamic object
-        
-        itemBehavior.density = 0.01
-        itemBehavior.resistance = 10
-        itemBehavior.friction = 0.0
-        itemBehavior.allowsRotation = false
-        
-        addChildBehavior(collisionBehavior)
+        addChildBehavior(commonGravityField)
         addChildBehavior(itemBehavior)
+        addChildBehavior(collisionBehavior)
     }
     
     // MARK: - Functions

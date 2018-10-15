@@ -79,9 +79,9 @@ final class SpringFieldBehavior: UIDynamicBehavior {
     }
     
     private func setupItemBehavior() {
-        itemBehavior.density = 0.01
+        itemBehavior.density = 1
         itemBehavior.resistance = 10
         itemBehavior.friction = 0.0
-//        itemBehavior.allowsRotation = false
+        itemBehavior.allowsRotation = false
     }
 }

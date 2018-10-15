@@ -84,6 +84,7 @@
 		F5E036FF214F966300F32593 /* rectangles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F5E036FE214F966200F32593 /* rectangles.geojson */; };
 		F5E03701214FAA9400F32593 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E03700214FAA9400F32593 /* MapVM.swift */; };
 		F5E03703214FAC4E00F32593 /* MapViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E03702214FAC4E00F32593 /* MapViewProtocol.swift */; };
+		F5E5B17E2174877A00FEC52A /* BubblesBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E5B17D2174877A00FEC52A /* BubblesBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -186,6 +187,7 @@
 		F5E036FE214F966200F32593 /* rectangles.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rectangles.geojson; sourceTree = SOURCE_ROOT; };
 		F5E03700214FAA9400F32593 /* MapVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVM.swift; sourceTree = "<group>"; };
 		F5E03702214FAC4E00F32593 /* MapViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewProtocol.swift; sourceTree = "<group>"; };
+		F5E5B17D2174877A00FEC52A /* BubblesBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			children = (
 				F5177E852166120000C6D1B0 /* AppleMusicFilterViewController.swift */,
 				F5177E882166338E00C6D1B0 /* BubbleView.swift */,
+				F5E5B17D2174877A00FEC52A /* BubblesBehavior.swift */,
 			);
 			path = AppleMusicFilterExample;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				F5E03701214FAA9400F32593 /* MapVM.swift in Sources */,
 				F5CDB819214A67EF00C9FD28 /* AppCore.swift in Sources */,
 				F5177E8421660B1200C6D1B0 /* CGPoint+Extensions.swift in Sources */,
+				F5E5B17E2174877A00FEC52A /* BubblesBehavior.swift in Sources */,
 				F56967CD2150DFFC003642A8 /* ConcreteDetailsPresenter.swift in Sources */,
 				F5CDB82D214A802000C9FD28 /* CustomNavigationController.swift in Sources */,
 				F5B07531216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift in Sources */,
