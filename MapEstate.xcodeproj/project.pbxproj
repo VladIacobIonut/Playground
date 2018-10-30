@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F507E47D21874E0C00B8A580 /* HorizontalScaleCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507E47C21874E0C00B8A580 /* HorizontalScaleCollectionViewLayout.swift */; };
+		F51291D7218840BC008FA575 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F51291D6218840BC008FA575 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F51291D9218840C0008FA575 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F51291D8218840C0008FA575 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F51291DB218840C4008FA575 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F51291DA218840C4008FA575 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F51291DD218840CB008FA575 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F51291DC218840CA008FA575 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5177E822165F38A00C6D1B0 /* PiPExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5177E812165F38A00C6D1B0 /* PiPExampleViewController.swift */; };
 		F5177E8421660B1200C6D1B0 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5177E8321660B1200C6D1B0 /* CGPoint+Extensions.swift */; };
 		F5177E862166120000C6D1B0 /* AppleMusicFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5177E852166120000C6D1B0 /* AppleMusicFilterViewController.swift */; };
@@ -17,19 +22,15 @@
 		F5193539215A578D0005F778 /* UniqueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5193538215A578D0005F778 /* UniqueIdentifiable.swift */; };
 		F519353B215A65090005F778 /* SetDetailsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F519353A215A65090005F778 /* SetDetailsUC.swift */; };
 		F519353D215A65AE0005F778 /* PropertiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F519353C215A65AE0005F778 /* PropertiesManager.swift */; };
+		F51F46CE2177678E0001EBF5 /* ItemsBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F46CD2177678E0001EBF5 /* ItemsBarViewController.swift */; };
+		F51F46D0217768380001EBF5 /* ItemsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F46CF217768380001EBF5 /* ItemsBarView.swift */; };
+		F51F46D2217768580001EBF5 /* HorizontalDottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F46D1217768580001EBF5 /* HorizontalDottedLine.swift */; };
+		F51F46D4217768640001EBF5 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F46D3217768640001EBF5 /* RoundedLabelView.swift */; };
 		F52543A82152729500606F60 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F52543A62152729500606F60 /* Model.xcdatamodeld */; };
 		F528A4502159137D00073E77 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528A44F2159137D00073E77 /* RealmModel.swift */; };
 		F5367C2021550E20007C47DD /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5367C1F21550E20007C47DD /* PersistanceManager.swift */; };
 		F5367C22215510A2007C47DD /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5367C21215510A2007C47DD /* Dog.swift */; };
 		F5367C25215511A6007C47DD /* PersistableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5367C24215511A6007C47DD /* PersistableModel.swift */; };
-		F545C5B5216CC90300C2F349 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5485F46214A96EF00B20414 /* Mapbox.framework */; };
-		F545C5B6216CC90500C2F349 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5367C1B2154D106007C47DD /* Realm.framework */; };
-		F545C5B7216CC90700C2F349 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5367C1D2154D108007C47DD /* RealmSwift.framework */; };
-		F545C5B8216CC90A00C2F349 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E036E4214A987900F32593 /* SnapKit.framework */; };
-		F545C5BB216CC9AE00C2F349 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F545C5B9216CC9AE00C2F349 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F545C5BF216CC9B300C2F349 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F545C5BD216CC9B300C2F349 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F545C5C2216CC9B800C2F349 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F545C5C0216CC9B800C2F349 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F545C5C5216CC9C100C2F349 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F545C5C3216CC9C100C2F349 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F545C5C7216DE06F00C2F349 /* TinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545C5C6216DE06F00C2F349 /* TinderCollectionViewLayout.swift */; };
 		F545C5C9216DEFF000C2F349 /* BasicSpringlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545C5C8216DEFF000C2F349 /* BasicSpringlyCollectionViewCell.swift */; };
 		F56967BE214FD892003642A8 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56967BD214FD892003642A8 /* MapManager.swift */; };
@@ -90,14 +91,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F545C5BC216CC9AE00C2F349 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F545C5C2216CC9B800C2F349 /* Realm.framework in Embed Frameworks */,
-				F545C5BF216CC9B300C2F349 /* RealmSwift.framework in Embed Frameworks */,
-				F545C5BB216CC9AE00C2F349 /* SnapKit.framework in Embed Frameworks */,
-				F545C5C5216CC9C100C2F349 /* Mapbox.framework in Embed Frameworks */,
+				F51291D7218840BC008FA575 /* Realm.framework in Embed Frameworks */,
+				F51291DD218840CB008FA575 /* RealmSwift.framework in Embed Frameworks */,
+				F51291D9218840C0008FA575 /* SnapKit.framework in Embed Frameworks */,
+				F51291DB218840C4008FA575 /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +106,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F507E47C21874E0C00B8A580 /* HorizontalScaleCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScaleCollectionViewLayout.swift; sourceTree = "<group>"; };
+		F51291D4218840A5008FA575 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		F51291D6218840BC008FA575 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		F51291D8218840C0008FA575 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		F51291DA218840C4008FA575 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
+		F51291DC218840CA008FA575 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		F5177E812165F38A00C6D1B0 /* PiPExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPExampleViewController.swift; sourceTree = "<group>"; };
 		F5177E8321660B1200C6D1B0 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		F5177E852166120000C6D1B0 /* AppleMusicFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicFilterViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +122,10 @@
 		F5193538215A578D0005F778 /* UniqueIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueIdentifiable.swift; sourceTree = "<group>"; };
 		F519353A215A65090005F778 /* SetDetailsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsUC.swift; sourceTree = "<group>"; };
 		F519353C215A65AE0005F778 /* PropertiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesManager.swift; sourceTree = "<group>"; };
+		F51F46CD2177678E0001EBF5 /* ItemsBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsBarViewController.swift; sourceTree = "<group>"; };
+		F51F46CF217768380001EBF5 /* ItemsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsBarView.swift; sourceTree = "<group>"; };
+		F51F46D1217768580001EBF5 /* HorizontalDottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDottedLine.swift; sourceTree = "<group>"; };
+		F51F46D3217768640001EBF5 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		F52543A72152729500606F60 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F528A44F2159137D00073E77 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		F5367C172154D0F7007C47DD /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
@@ -195,10 +206,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F545C5B5216CC90300C2F349 /* Mapbox.framework in Frameworks */,
-				F545C5B7216CC90700C2F349 /* RealmSwift.framework in Frameworks */,
-				F545C5B6216CC90500C2F349 /* Realm.framework in Frameworks */,
-				F545C5B8216CC90A00C2F349 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +236,20 @@
 				F5177E8C2167490900C6D1B0 /* CustomLayoutViewController.swift */,
 				F5177E8E216762DF00C6D1B0 /* BasicCollectionViewCell.swift */,
 				F5177E9021676B7200C6D1B0 /* ShazamCollectionViewLayout.swift */,
+				F507E47C21874E0C00B8A580 /* HorizontalScaleCollectionViewLayout.swift */,
 			);
 			path = CollectionViewLayoutExample;
+			sourceTree = "<group>";
+		};
+		F51F46CC2177677B0001EBF5 /* ItemsBar */ = {
+			isa = PBXGroup;
+			children = (
+				F51F46CD2177678E0001EBF5 /* ItemsBarViewController.swift */,
+				F51F46CF217768380001EBF5 /* ItemsBarView.swift */,
+				F51F46D1217768580001EBF5 /* HorizontalDottedLine.swift */,
+				F51F46D3217768640001EBF5 /* RoundedLabelView.swift */,
+			);
+			path = ItemsBar;
 			sourceTree = "<group>";
 		};
 		F52543A4215271F900606F60 /* DTO */ = {
@@ -317,6 +336,11 @@
 		F5CDB7F3214A46A900C9FD28 = {
 			isa = PBXGroup;
 			children = (
+				F51291DC218840CA008FA575 /* RealmSwift.framework */,
+				F51291DA218840C4008FA575 /* Mapbox.framework */,
+				F51291D8218840C0008FA575 /* SnapKit.framework */,
+				F51291D4218840A5008FA575 /* Realm.framework */,
+				F51291D6218840BC008FA575 /* Realm.framework */,
 				F5CDB812214A60AE00C9FD28 /* Frameworks */,
 				F545C5C3216CC9C100C2F349 /* Mapbox.framework */,
 				F5CDB7FE214A46A900C9FD28 /* MapEstate */,
@@ -475,6 +499,7 @@
 		F5D4D8A42164DF8C006D2C33 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				F51F46CC2177677B0001EBF5 /* ItemsBar */,
 				F5177E872166336600C6D1B0 /* AppleMusicFilterExample */,
 				F5177E8B216748E900C6D1B0 /* CollectionViewLayoutExample */,
 				F5B0752F216F4EA4003BD49C /* FieldBehaviourExample */,
@@ -616,6 +641,7 @@
 				F5177E822165F38A00C6D1B0 /* PiPExampleViewController.swift in Sources */,
 				F5E036F5214BAEF200F32593 /* Typealiases.swift in Sources */,
 				F591E6DF21635B5200EA175A /* CustomButton.swift in Sources */,
+				F51F46D4217768640001EBF5 /* RoundedLabelView.swift in Sources */,
 				F56967C0214FD984003642A8 /* GetMaptilesUC.swift in Sources */,
 				F5E036F3214B966300F32593 /* UIViewController+Extensions.swift in Sources */,
 				F5367C22215510A2007C47DD /* Dog.swift in Sources */,
@@ -623,6 +649,7 @@
 				F56967C6214FDD0D003642A8 /* Property.swift in Sources */,
 				F591E6E1216385B500EA175A /* SearchView.swift in Sources */,
 				F56967BE214FD892003642A8 /* MapManager.swift in Sources */,
+				F51F46D2217768580001EBF5 /* HorizontalDottedLine.swift in Sources */,
 				F528A4502159137D00073E77 /* RealmModel.swift in Sources */,
 				F5D4D89F2164C221006D2C33 /* ConcreteProfilePresenter.swift in Sources */,
 				F5367C25215511A6007C47DD /* PersistableModel.swift in Sources */,
@@ -635,6 +662,7 @@
 				F5CDB82D214A802000C9FD28 /* CustomNavigationController.swift in Sources */,
 				F5B07531216F4EC1003BD49C /* FieldBehaviourExampleViewController.swift in Sources */,
 				F5E036FB214F93DD00F32593 /* MapPresenter.swift in Sources */,
+				F51F46CE2177678E0001EBF5 /* ItemsBarViewController.swift in Sources */,
 				F5CDB82B214A7FA900C9FD28 /* UIColor+Extensions.swift in Sources */,
 				F5B0753521707BD4003BD49C /* AttachmentBehaviorExampleViewController.swift in Sources */,
 				F519353D215A65AE0005F778 /* PropertiesManager.swift in Sources */,
@@ -647,6 +675,7 @@
 				F5E036F9214BDF3100F32593 /* UIButton+Extensions.swift in Sources */,
 				F5E036F1214B952400F32593 /* DetailsViewController.swift in Sources */,
 				F56967CB2150DEFA003642A8 /* DetailsPresenter.swift in Sources */,
+				F51F46D0217768380001EBF5 /* ItemsBarView.swift in Sources */,
 				F5CDB800214A46A900C9FD28 /* AppDelegate.swift in Sources */,
 				F519353B215A65090005F778 /* SetDetailsUC.swift in Sources */,
 				F5B0753721707E0B003BD49C /* AttachmentBehavior.swift in Sources */,
@@ -665,6 +694,7 @@
 				F56967D12150E51D003642A8 /* GetDetailsUC.swift in Sources */,
 				F56967CF2150E33F003642A8 /* DetailsViewProtocol.swift in Sources */,
 				F5CDB81D214A71FD00C9FD28 /* Routable.swift in Sources */,
+				F507E47D21874E0C00B8A580 /* HorizontalScaleCollectionViewLayout.swift in Sources */,
 				F5E036EF214B913700F32593 /* UIView+Extensions.swift in Sources */,
 				F56967C82150DA2C003642A8 /* Bool+Extensions.swift in Sources */,
 				F5D4D89B2164C1C7006D2C33 /* ProfilePresenter.swift in Sources */,
@@ -825,7 +855,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.P3.MapEstate.v2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.P3.MapEstate.v3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -850,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.P3.MapEstate.v2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.P3.MapEstate.v3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

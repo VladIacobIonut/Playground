@@ -14,6 +14,7 @@ enum Example: String, CaseIterable {
     case music = "AppleMusic Filter"
     case collectionView = "Shazam Discover"
     case fieldBehaviour = "UIKit Dynamics"
+    case dottedLines = "Items Bar"
     
     var viewController: UIViewController {
         switch self {
@@ -27,6 +28,8 @@ enum Example: String, CaseIterable {
             return CustomLayoutViewController()
         case .fieldBehaviour:
             return AttachmentBehaviorExampleViewController()
+        case .dottedLines:
+            return ItemsBarViewController()
         }
     }
     
@@ -42,6 +45,8 @@ enum Example: String, CaseIterable {
             return #imageLiteral(resourceName: "shazam.png")
         case .fieldBehaviour:
             return #imageLiteral(resourceName: "physics.png")
+        case .dottedLines:
+            return #imageLiteral(resourceName: "flower.png")
         }
     }
 }
