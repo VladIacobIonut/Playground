@@ -48,7 +48,8 @@ final class RootRouter: Routable {
             self.tabVC.animateHidden = false
             detailsVC.remove()
         }
-        tabVC.viewControllers?.first?.add(detailsVC)
+        
+        tabVC.viewControllers?[1].add(detailsVC)
         tabVC.animateHidden = true
     }
     

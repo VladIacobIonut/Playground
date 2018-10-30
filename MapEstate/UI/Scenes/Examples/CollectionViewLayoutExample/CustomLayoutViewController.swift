@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import SnapKit
 
 class CustomLayoutViewController: UIViewController {
     // MARK: - Properties
     
+    private lazy var cellHeight = Int(collectionView.bounds.height - 100)
+    private lazy var cellWidth = Int(collectionView.bounds.width - 40)
     private let collectionViewLayout: UICollectionViewFlowLayout = {
        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
         
         return layout
@@ -24,11 +25,12 @@ class CustomLayoutViewController: UIViewController {
     // MARK: - Init
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: ShazamCollectionViewLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: HorizontalScaleCollectionViewLayout())
         collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: "BasicCell")
         
         super.init(nibName: nil, bundle: nil)
         
+        collectionView.delegate = self
         collectionView.dataSource = self
     }
     
@@ -80,6 +82,6 @@ extension CustomLayoutViewController: UICollectionViewDataSource {
 
 extension CustomLayoutViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 20, height: 400)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }

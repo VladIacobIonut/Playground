@@ -101,6 +101,9 @@ final class ShazamCollectionViewLayout: UICollectionViewFlowLayout {
         let finalY = max(minY, maxY)
         var origin = attributes.frame.origin
         let deltaY = (finalY - origin.y) / attributes.frame.height
+        
+        print(attributes.indexPath.item, "---", deltaY)
+        
         let translationScale = CGFloat((attributes.zIndex + 1) * 10)
         
         let scale = 1 - deltaY * firstItemTransform

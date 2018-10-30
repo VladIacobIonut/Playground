@@ -17,6 +17,7 @@ extension UIColor {
     static let blueishBlack = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1.0)
     static let darkJungleGreen = UIColor(red: 28/255, green: 25/255, blue: 33/255, alpha: 1.0)
     static let appleMusicRed = UIColor(red: 182/255, green: 49/255, blue: 88/255, alpha: 1.0)
+    static let oceanBlue = UIColor(red: 0/255, green: 114/255, blue: 180/255, alpha: 1.0)
     
     // Apple Guideline Colors
     static let appleRed = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1.0)
