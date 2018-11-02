@@ -95,7 +95,9 @@ final class HorizontalScaleCollectionViewLayout: UICollectionViewFlowLayout {
         
         let deltaY = abs(finalX - collectionView!.frame.midX) / attribute.frame.width
         let scale = 1 - deltaY * 0.2
+        let alpha = 1 - deltaY
         
+        attribute.alpha = alpha
         attribute.transform = CGAffineTransform(scaleX: 1, y: scale)
     }
 }

@@ -65,7 +65,6 @@ final class TinderCollectionViewLayout: UICollectionViewFlowLayout {
     fileprivate func updateCellAttributes(_ attributes: UICollectionViewLayoutAttributes) {
         attributes.zIndex = -attributes.indexPath.row
  
-        
         var origin = attributes.frame.origin
         let translation = CGFloat((attributes.indexPath.row + 1) * 7)
         let deltaZ = CGFloat(attributes.indexPath.row) / 10
@@ -84,4 +83,3 @@ final class TinderCollectionViewLayout: UICollectionViewFlowLayout {
         lastFrame = attributes.frame
     }
 }
-

@@ -14,17 +14,19 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
     var shouldDismiss: VoidClosure?
     let label = UILabel()
     private var initialOffset: CGPoint = .zero
-    private var fieldAnimator = UIDynamicAnimator()
-    private var fieldBehaviour = UIFieldBehavior.springField()
+    private var swipingVelocityThreshold: CGFloat = 800
+    private var rotationDegreeRatio: CGFloat = 0.50
+    private var divisor: CGFloat = 0
     private var initialCenter: CGPoint = .zero
+    private var swipeableView = UIView()
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        initialCenter = self.center
+        initialCenter = self.contentView.center
+        divisor = contentView.frame.width / rotationDegreeRatio
         setupUI()
-        setupSpringField()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,16 +37,22 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        contentView.layer.cornerRadius = 15
+
+        self.swipeableView.transform = CGAffineTransform.identity
     }
     
     // MARK: - Functions
     
     private func setupUI() {
-        contentView.addSubview(label)
-        contentView.clipsToBounds = true
-        contentView.backgroundColor = UIColor.randomColor()
+        contentView.addSubview(swipeableView)
+        swipeableView.clipsToBounds = true
+        swipeableView.backgroundColor = UIColor.randomColor()
+        swipeableView.layer.cornerRadius = 25
+        
+        swipeableView.addSubview(label)
+        swipeableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         label.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
@@ -55,23 +63,19 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
         label.textColor = UIColor.white
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-        contentView.addGestureRecognizer(panGesture)
-    }
-    
-    private func setupSpringField() {
-        fieldAnimator = UIDynamicAnimator(referenceView: self)
+        swipeableView.addGestureRecognizer(panGesture)
     }
     
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
         let touchPoint = recognizer.location(in: self)
+        let xFromCenter = swipeableView.center.x - center.x
+        let scale = min(100 / abs(xFromCenter), 1)
         switch recognizer.state {
         case .began:
-            fieldAnimator.removeAllBehaviors()
-            initialOffset = CGPoint(x: touchPoint.x - contentView.center.x, y: touchPoint.y - contentView.center.y)
+            initialOffset = CGPoint(x: touchPoint.x - swipeableView.center.x, y: touchPoint.y - swipeableView.center.y)
         case .changed:
-            contentView.center = CGPoint(x: touchPoint.x - initialOffset.x, y: touchPoint.y - initialOffset.y)
-            print(self.frame.width / 2 - touchPoint.x)
-//            contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) )
+            swipeableView.center = CGPoint(x: touchPoint.x - initialOffset.x, y: touchPoint.y - initialOffset.y)
+            swipeableView.transform = CGAffineTransform(rotationAngle: xFromCenter / divisor).scaledBy(x: scale, y: scale)
         case .ended, .cancelled:
             handleSwipeEnding(for: recognizer.velocity(in: self).x)
         default:
@@ -81,13 +85,28 @@ class BasicSpringlyCollectionViewCell: UICollectionViewCell {
     
     private func handleSwipeEnding(for xVelocity: CGFloat) {
         let velocity = abs(xVelocity)
-        guard velocity > 500 else {
-            fieldAnimator.addBehavior(UISnapBehavior(item: contentView, snapTo: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)))
+        guard velocity > swipingVelocityThreshold else {
+            moveCardToInitialState()
             return
         }
         
-        fieldAnimator.removeAllBehaviors()
-        contentView.transform = CGAffineTransform(translationX: xVelocity * 0.8, y: 0)
+        swipeCardAway(with: xVelocity)
+    }
+    
+    private func moveCardToInitialState() {
+        UIView.animate(withDuration: 0.2) {
+            self.swipeableView.center = self.center
+        }
+        
+        swipeableView.transform = CGAffineTransform.identity
+    }
+    
+    private func swipeCardAway(with xVelocity: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            self.swipeableView.center = CGPoint(x: self.swipeableView.center.x + xVelocity, y: self.swipeableView.center.y)
+        }
+        
         shouldDismiss?()
     }
 }
+

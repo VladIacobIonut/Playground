@@ -59,7 +59,7 @@ final class MapManager: GetMaptilesUC, GetDetailsUC, SetDetailsUC {
             return
         }
         persistanceManager.performOperation(of: shouldPersist ? .insert : .delete , [currentProperty]) { (status) in
-            print(status)
+            
         }
     }
 }
